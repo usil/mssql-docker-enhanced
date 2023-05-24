@@ -45,7 +45,10 @@ docker build -t mssql-docker-enhanced .
 ## docker-compose
 
 ```
-  mssql-docker-enhanced:
+version: '3.7'
+
+services:
+ mssql-docker-enhanced:
     image: usildevops/mssql-docker-enhanced
     container_name: mssql-docker-enhanced
     shm_size: 1g
@@ -55,12 +58,10 @@ docker build -t mssql-docker-enhanced .
       ACCEPT_EULA: 1
       MSSQL_PID: Developer
       MSSQL_USER: sa
-      MSSQL_SA_PASSWORD: changeme
+      MSSQL_SA_PASSWORD: 70quasWNl*o#nu4U
       TZ: America/Lima
     volumes:
       - ./my/scripts:/docker-entrypoint-initdb.d
-    networks:
-      - template_network
     healthcheck:
       test: cat /var/log/docker/sqlserver_db_init.log | grep [db_init_completed]
       interval: 10s
@@ -68,6 +69,12 @@ docker build -t mssql-docker-enhanced .
       retries: 10
       start_period: 10s 
 ```
+
+> Set your own password
+  
+And use these parameters to connect from your favourite ide: 
+  
+![image](https://github.com/usil/mssql-docker-enhanced/assets/3322836/5e87ecd8-d79b-4ea2-a8e9-e2671faa7683)
 
 ## Features
 
@@ -82,11 +89,10 @@ docker build -t mssql-docker-enhanced .
 
 <table>
   <tbody>
-    <td>
+    <td style="text-align:center">
       <img src="https://avatars0.githubusercontent.com/u/3322836?s=460&v=4" width="100px;"/>
       <br />
-      <label><a href="http://jrichardsz.github.io/">JRichardsz</a></label>
-      <br />
+      <a href="http://jrichardsz.github.io/">JRichardsz</a>
     </td>    
   </tbody>
 </table>
